@@ -1,33 +1,40 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	input := strings.Split(inp, ",")
-	input[1] = "12"
-	input[2] = "2"
-	for i, _ := range input {
-		if i%4 == 0 {
-			if input[i] == "99" {
-				println(input[0])
-				break
-			}
-			a, _ := strconv.Atoi(input[i+1])
-			a, _ = strconv.Atoi(input[a])
-			b, _ := strconv.Atoi(input[i+2])
-			b, _ = strconv.Atoi(input[b])
-			c, _ := strconv.Atoi(input[i+3])
-			switch input[i] {
-			case "1":
-				n := strconv.Itoa(a + b)
-				input[c] = n
-			case "2":
-				n := strconv.Itoa(a * b)
-				input[c] = n
+	for x := 0; x < 100; x++ {
+		for y := 0; y < 100; y++ {
+			input := strings.Split(inp, ",")
+			input[1] = strconv.Itoa(x)
+			input[2] = strconv.Itoa(y)
+			for i, _ := range input {
+				if i%4 == 0 {
+					if input[i] == "99" {
+						if input[0] == "19690720" {
+							fmt.Println(x, y)
+						}
+						break
+					}
+					a, _ := strconv.Atoi(input[i+1])
+					a, _ = strconv.Atoi(input[a])
+					b, _ := strconv.Atoi(input[i+2])
+					b, _ = strconv.Atoi(input[b])
+					c, _ := strconv.Atoi(input[i+3])
+					switch input[i] {
+					case "1":
+						n := strconv.Itoa(a + b)
+						input[c] = n
+					case "2":
+						n := strconv.Itoa(a * b)
+						input[c] = n
 
+					}
+				}
 			}
 		}
 	}
